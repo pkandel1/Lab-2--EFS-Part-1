@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u*qu@66z&k6_o8z)w-v19v!%+44@t4h6z_p=5vm#yfz+-!8qe#'
+SECRET_KEY = '3fn2nk9hcde2gyej&horgy6@i)+ka9&^ogr9kek5i792zk6y)4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -120,11 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

@@ -28,23 +28,6 @@ class Customer(models.Model):
     def __str__(self):
         return str(self.cust_number)
 
-class Stock(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='stocks')
-    symbol = models.CharField(max_length=10)
-    name = models.CharField(max_length=50)
-    shares = models.DecimalField (max_digits=10, decimal_places=1)
-    purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
-    purchase_date = models.DateField(default=timezone.now, blank=True, null=True)
-
-    def created(self):
-        self.recent_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return str(self.customer)
-
-    def initial_stock_value(self):
-        return self.shares * self.purchase_price
 
 class Investment(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='investments')
@@ -68,4 +51,24 @@ class Investment(models.Model):
 
     def results_by_investment(self):
         return self.recent_value - self.acquired_value
+
+class Stock(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='stocks')
+    symbol = models.CharField(max_length=10)
+    name = models.CharField(max_length=50)
+    shares = models.DecimalField (max_digits=10, decimal_places=1)
+    purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
+    purchase_date = models.DateField(default=timezone.now, blank=True, null=True)
+
+    def created(self):
+        self.recent_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return str(self.customer)
+
+    def initial_stock_value(self):
+        return self.shares * self.purchase_price
+
+
 

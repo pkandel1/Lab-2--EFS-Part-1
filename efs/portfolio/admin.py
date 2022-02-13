@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from .models import Customer, Investment, Stock
 
@@ -18,7 +19,6 @@ class StockList(admin.ModelAdmin):
     list_filter = ('customer','symbol', 'name')
     search_fields = ('customer','symbol', 'name')
     ordering = ['customer']
-
 
 
 admin.site.register(Customer, CustomerList)
